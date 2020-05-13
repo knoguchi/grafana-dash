@@ -1,0 +1,4 @@
+export GRAFANA_URL=http://localhost:3000
+export GRAFANA_ADMIN_USER=admin
+export GRAFANA_ADMIN_PASS=admin
+export GRAFANA_ORG="Main.org"
