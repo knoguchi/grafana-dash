@@ -42,7 +42,7 @@ Upload one dashboard
 ./grafana-dash.py --upload my_dashboard.json
 ```
 
-# Example: I want to update datasources in a dashboard
+# Example 1: update datasources in a dashboard
 - dashboard name "My Dashboard"
 - old datasource name "old datasource"
 - new datasource name "new datasource"
@@ -73,8 +73,10 @@ Upload one dashboard
 
 # upload the datasource
 ./grafana-dash.py --upload new_my_dashboard.json
+```
 
-# Example: I want to update datasources of all dashboards.
+
+# Example 2: update datasources of all dashboards.
 This script demonstrates the idea of batch processing.
 It has no dry-run mode or any error checking.  Potentially it can destroy your Grafana dashboards.
 Do not run against your production Grafana without understanding what is going on.
