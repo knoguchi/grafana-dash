@@ -50,6 +50,20 @@ Upload one dashboard
 
 # check if the result is desirable
 ./grafana-dash.py --diff new_my_dashboard.json
+---
+
++++
+
+@@ -23,7 +23,7 @@
+
+                 "value": "avg"
+               }
+             ],
+-            "datasource": "old datasource",
++            "datasource": "new datasource",
+             "editable": true,
+             "error": false,
+             "fontSize": "100%",
 
 # upload the datasource
 ./grafana-dash.py --upload new_my_dashboard.json
