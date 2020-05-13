@@ -71,7 +71,7 @@ Upload one dashboard
              "error": false,
              "fontSize": "100%",
 
-# upload the datasource
+# upload the edited dashboard
 ./grafana-dash.py --upload new_my_dashboard.json
 ```
 
