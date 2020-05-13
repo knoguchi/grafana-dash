@@ -1,6 +1,6 @@
 # Grafana dashboard admin tool
 
-Please use at your own risk. Take a backup of the dashboards.
+Please use at your own risk. Take a backup of the dashboards before performing destructive operations.
 
 # Configuration
 Edit grafana.rc, and set the admin username, password, organization
