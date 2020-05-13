@@ -4,6 +4,8 @@
 
 set -e
 
+. ./grafana.rc
+
 OLD="old datasource"
 NEW="new datasource"
 

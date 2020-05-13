@@ -25,12 +25,16 @@ Download one dashboard
 ./grafana-dash.py --dump "My Dashboard"
 ```
 
+Datasource update script
+```
+./update-datasource.jq --arg old "old datasource name" --arg new "new datasource name" < my_dashboard.json > edited_my_dashboard.json
+```
+
 Check diff of the local dashboard json and the one in Grafana
 
 ```
 ./grafana-dash.py --diff my_dashboard.json
 ```
-
 
 Upload one dashboard
 
@@ -38,7 +42,7 @@ Upload one dashboard
 ./grafana-dash.py --upload my_dashboard.json
 ```
 
-# Example: I want to update datasource
+# Example: I want to update datasources in a dashboard
 - dashboard name "My Dashboard"
 - old datasource name "old datasource"
 - new datasource name "new datasource"
@@ -69,6 +73,15 @@ Upload one dashboard
 
 # upload the datasource
 ./grafana-dash.py --upload new_my_dashboard.json
+
+# Example: I want to update datasources of all dashboards.
+This script demonstrates the idea of batch processing.
+It has no dry-run mode or any error checking.  Potentially it can destroy your Grafana dashboards.
+Do not run against your production Grafana without understanding what is going on.
+
+Edit batch_datasource_update.sh and set OLD and NEW datasource names
+```
+./batch_datasource_update.sh
 ```
 
 
