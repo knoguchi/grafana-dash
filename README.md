@@ -4,6 +4,11 @@ Please use at your own risk. Take a backup of the dashboards before performing d
 
 # Configuration
 Edit grafana.rc, and set the admin username, password, organization
+Then source it in the shell
+
+```
+. ./grafana.rc
+```
 
 # Usage
 
