@@ -6,6 +6,7 @@ import argparse
 import time
 import csv
 import difflib
+import re
 
 from urllib.parse import urlparse
 # https://pypi.org/project/grafana-api/
@@ -22,7 +23,7 @@ CLI = None
 def printlist(l):
     for e in l:
         print(e)
-        
+
 def printerror(*args):
     print(*args, file=sys.stderr)
 
@@ -64,7 +65,7 @@ def dashboard_command(args):
         new_dash_json=json.dumps(new_dash, sort_keys=True, indent=2)
         old_dash_json=json.dumps(old_dash, sort_keys=True, indent=2)
         printlist(difflib.unified_diff(old_dash_json.split("\n"), new_dash_json.split("\n")))
-        
+
     elif args.upload:
         # upload the local dashboard json.  Overwrite if the same uid exists
         new_dash = read_dash_json(args.upload)
@@ -95,17 +96,18 @@ def dump_dashboard(dash_title):
     if dash['type'] != 'dash-db':
         raise ValueError("{} is not a dashboard type: The type is {}".format(dash_title, dash['type']))
 
-        
+
     # Getting the dashboard from the source org
     dash_detail = CLI.dashboard.get_dashboard(dash['uid'])
-    name = "{}_{}".format(dash['id'], dash['title']).lower().replace(' ', '_') + ".json"
+    name = "{}_{}".format(dash['id'], dash['title']).lower() + ".json"
+    name = re.sub(r'[\\/:*?"<>| ]+','_',name)
     printerror("Saving {}".format(dash['title']))
     with open(name, 'w') as fh:
         fh.write(json.dumps(dash_detail))
 
 def upload_dashboard(dash_json):
     CLI.dashboard.update_dashboard(dash_json)
-    
+
 def find_org_by_name(org_name):
     """
     find the target org id by name
@@ -113,14 +115,14 @@ def find_org_by_name(org_name):
     global ALL_ORGS
     if not ALL_ORGS:
         ALL_ORGS = CLI.organizations.list_organization()
-        
+
     org = None
     for o in ALL_ORGS:
         if o["name"] == org_name:
             org = o
             return org
     return None
-    
+
 def main():
     global CLI
     parser = argparse.ArgumentParser(description="Grafana admin")
