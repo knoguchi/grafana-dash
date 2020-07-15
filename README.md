@@ -2,6 +2,11 @@
 
 Please use at your own risk. Take a backup of the dashboards before performing destructive operations.
 
+## Requirements
+
+- python 3
+- jq 1.6
+
 # Configuration
 Edit grafana.rc, and set the admin username, password, organization
 Then source it in the shell
