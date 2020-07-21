@@ -37,7 +37,7 @@ Download one dashboard
 
 Datasource update script
 ```
-./update-datasource.jq --arg old "old datasource name" --arg new "new datasource name" < my_dashboard.json > edited_my_dashboard.json
+jq -Mf ./update-datasource.jq --arg old "old datasource name" --arg new "new datasource name" < my_dashboard.json > edited_my_dashboard.json
 ```
 
 Check diff of the local dashboard json and the one in Grafana
@@ -62,7 +62,7 @@ Upload one dashboard
 ./grafana-dash.py --dump "My Dashboard"
 
 # edit the datasource
-./update-datasource.jq --arg old "old datasource" --arg new "new datasource" < my_dashboard.json > new_my_dashboard.json
+jq -Mf ./update-datasource.jq --arg old "old datasource" --arg new "new datasource" < my_dashboard.json > new_my_dashboard.json
 
 # check if the result is desirable
 ./grafana-dash.py --diff new_my_dashboard.json
