@@ -17,8 +17,8 @@ rm -f $TMPJSON
 
 for J in *.json
 do
-    echo $J
-    ./update-datasource.jq --arg old "$OLD" --arg new "$NEW" < $J > "$TMPJSON"  && \
-	mv "$TMPJSON" $J || exit
-    ./grafana-dash.py --upload $J || exit
+    echo "$J"
+    jq -Mf ./update-datasource.jq --arg old "$OLD" --arg new "$NEW" < "$J" > "$TMPJSON"  && \
+	mv "$TMPJSON" "$J" || exit
+    ./grafana-dash.py --upload "$J" || exit
 done
