@@ -1,4 +1,4 @@
-#!/usr/bin/env jq -Mf
+#!/usr/bin/env -S jq -Mf
 
 walk(
   if type == "object" and has("datasource") then
