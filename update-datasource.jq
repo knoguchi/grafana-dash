@@ -6,7 +6,13 @@ walk(
       .datasource = $new
     else
      .
-    end 
+    end
+  elif type == "object" and has("current") then
+    if .current.text == $old and .current.value == $old then
+      .current.text = $new | .current.value = $new
+    else
+      .
+    end
   else
     .
   end
