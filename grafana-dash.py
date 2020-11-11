@@ -71,7 +71,7 @@ def dashboard_command(args):
         new_dash = read_dash_json(args.upload)
         payload = {
             "dashboard": new_dash['dashboard'],
-            "folderId": 0,
+            "folderId": new_dash['meta']['folderId'],
             "overwrite": True
         }
         upload_dashboard(payload)
