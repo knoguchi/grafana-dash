@@ -7,6 +7,13 @@ Please use at your own risk. Take a backup of the dashboards before performing d
 - python 3
 - jq 1.6
 
+This package depends on [grafana-api](https://pypi.org/project/grafana-api/) PIP package.
+Run the following command to install it:
+
+```bash
+pip3 install -r requirements.txt
+```
+
 # Configuration
 Edit grafana.rc, and set the admin username, password, organization
 Then source it in the shell
